@@ -1,0 +1,39 @@
+# OpenClaw Flight Tracker Configuration
+# Managed by OpenClaw agent - edit via Telegram messages
+
+settings:
+  # Options: "daily", "immediate", "both"
+  alert_mode: daily
+  daily_summary_time: "08:00"
+  # Alert if price drops by this percentage since last check
+  price_drop_threshold_pct: 10
+  # Dates sampled per route per cron run (conserves SerpAPI 250 calls/month limit)
+  # 3 samples x 2 routes x 30 days = 180 calls/month
+  max_samples_per_route: 3
+
+routes:
+  - origin: CPH
+    destination: WAW
+    type: round_trip          # "round_trip" or "one_way"
+    outbound_date_range:
+      from: "2026-07-01"
+      to: "2026-07-15"
+    return_date_range:        # only used when type is round_trip
+      from: "2026-07-08"
+      to: "2026-07-22"
+    max_price: 1500
+    currency: DKK
+    max_stops: 1
+    active: true
+
+  - origin: WAW
+    destination: LIS
+    type: one_way
+    outbound_date_range:
+      from: "2026-08-01"
+      to: "2026-08-31"
+    return_date_range: null
+    max_price: 150
+    currency: EUR
+    max_stops: 0              # 0 = direct flights only
+    active: true

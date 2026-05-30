@@ -1,0 +1,4 @@
+.env
+openclaw.db
+__pycache__/
+*.pyc
